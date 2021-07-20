@@ -1,12 +1,12 @@
 import React from 'react';
 import { Container } from './styles';
 
+import { LoginForm } from '../../Components';
+
 function Login(){
   return (
     <Container>
-      <div>
-        Hello worldd
-      </div>
+      <LoginForm />
     </Container>
   )
 }
