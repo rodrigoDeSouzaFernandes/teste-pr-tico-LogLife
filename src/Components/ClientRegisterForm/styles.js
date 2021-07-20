@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button, RadioGroup, FormControlLabel } from '@material-ui/core'
 
 export const ClientForm = styled.form`
 display: flex;
@@ -18,3 +18,8 @@ export const ClientTextField = styled(TextField)`
     padding: 20px 30px
   }
 `;
+
+export const GroupRadio = styled(RadioGroup)`
+`;
+
+export const ControlFormLabel = styled(FormControlLabel)``;

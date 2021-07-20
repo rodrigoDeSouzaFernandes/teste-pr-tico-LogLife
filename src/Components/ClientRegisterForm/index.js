@@ -1,15 +1,17 @@
   import React, {useState} from 'react';
 
-  import {ClientForm, ClientTextField} from './styles';
+  import {ClientForm, ClientTextField, GroupRadio, ControlFormLabel} from './styles';
 
-  import {Select, MenuItem, FormHelperText} from '@material-ui/core'
+  import {Select, MenuItem, FormHelperText, Radio
+  } from '@material-ui/core'
 
   function ClientRegisterForm() {
     const [ typeOfClient, setTypeOfClient ] = useState(null);
+    const [ statusOfClient, setStatusOfClient ] = useState('Ativo');
 
     const clientType = () => (
       <>
-        <FormHelperText>Placeholder</FormHelperText>
+        <FormHelperText>Tipo de cliente:</FormHelperText>
         <Select
             value={typeOfClient}
             onChange={({target}) => setTypeOfClient(target.value)}
@@ -19,18 +21,45 @@
             required
           >
             <MenuItem value="" disabled>
-              Placeholder
+              Tipo de cliente
             </MenuItem>
-            <MenuItem value={10}>Ten</MenuItem>
-            <MenuItem value={20}>Twenty</MenuItem>
-            <MenuItem value={30}>Thirty</MenuItem>
+            <MenuItem value={'Pessoa Física'}>Pessoa Física</MenuItem>
+            <MenuItem value={'Pessoa Jurídica'}>Pessoa Jurídica</MenuItem>
           </Select>
       </>
     )
 
+    const clientStatus = () => {
+      const StyledRadio = (props) => {
+      
+        return (
+          <Radio
+            disableRipple
+            color="default"
+            {...props}
+          />
+        );
+      }
+
+      return (
+        <>
+        <FormHelperText>Situação do cliente:</FormHelperText>
+        <GroupRadio
+        onChange={({target}) => setStatusOfClient(target.value)}
+        value={statusOfClient}
+        aria-label="gender" 
+        name="customized-radios">
+          <ControlFormLabel value="Ativo" control={<StyledRadio />} label="Ativo" />
+          <ControlFormLabel value="Inativo" control={<StyledRadio />} label="Inativo" />
+        </GroupRadio>
+        </>
+      )
+    }
+
     return (
       <ClientForm>
         {clientType()}
+        {clientStatus()}
         {/* <LoginTextField
           id="outlined-basic"
           label="Email"
@@ -38,7 +67,7 @@
           value={email}
           onChange={handleChangeEmail}
         /> */}
-      
+  
       </ClientForm>
     )
   }
