@@ -6,6 +6,8 @@ import { Reset } from 'styled-reset'
 import Login from './Pages/Login';
 import theme from './theme'
 import Provider from './context/Provider'
+import Home from './Pages/Home';
+import ClientRegister from './Pages/ClientRegister';
 
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Reset />
         <Switch>
           <Route exact path='/' component={ Login } />
+          <Route exact path='/home' component={ Home } />
+          <Route exact path='/register' component={ ClientRegister } />
         </Switch>
       </ThemeProvider>
     </Provider>
