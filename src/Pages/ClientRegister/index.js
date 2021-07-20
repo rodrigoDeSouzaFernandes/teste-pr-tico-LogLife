@@ -1,9 +1,16 @@
 import React from 'react';
-import { ClientRegisterForm } from '../../Components';
+import { ClientRegisterForm, Header } from '../../Components';
+
+import { RegisterContainer } from './styles'
 
 function ClientRegister () {
   return (
-    <ClientRegisterForm />
+    <>
+      <Header />
+      <RegisterContainer>
+        <ClientRegisterForm />
+      </RegisterContainer>
+    </>
   )
 }
 

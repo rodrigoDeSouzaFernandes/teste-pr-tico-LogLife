@@ -6,12 +6,16 @@ export const ClientForm = styled.form`
 display: flex;
 flex-direction: column;
 justify-content: center;
-width: 350px;
+width: 500px;
+padding: 40px 20px;
+border-radius: 10px;
+background-color: white;
+box-shadow: 5px 5px 10px ${(props) => props.theme.colors.background};
 `;
 
 export const ClientTextField = styled(TextField)`
   .MuiInputBase-root {
-    margin-bottom: 5px
+    margin-bottom: 10px
   }
 
   .MuiOutlinedInput-input {

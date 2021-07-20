@@ -5,6 +5,7 @@ function Provider ({children}) {
 
   const [users, setUsers] = useState([]);
   const [acessToken, setAcessToken] = useState(null);
+  const [clients, setClients] = useState([]);
 
   useEffect(() => {
       const lsusers = localStorage.getItem('users');
@@ -20,7 +21,9 @@ function Provider ({children}) {
     users,
     setUsers,
     acessToken,
-    setAcessToken
+    setAcessToken,
+    clients,
+    setClients,
   };
 
   return (

@@ -1,4 +1,4 @@
-  import React, {useState, useEffect} from 'react';
+  import React, {useState, useEffect, useContext} from 'react';
 
   import {ClientForm, ClientTextField, GroupRadio, ControlFormLabel} from './styles';
 
@@ -6,6 +6,7 @@
     FormControlLabel, FormGroup, Button,
   } from '@material-ui/core'
 import getAllStates from '../../helpers/getAllStates';
+import Context from '../../context/Context';
 
   function ClientRegisterForm() {
     const [allStates, setAllStates] = useState([])
@@ -24,6 +25,8 @@ import getAllStates from '../../helpers/getAllStates';
     const [opening, setOpening] = useState('');
     const [attendance, setAttendance] = useState('');
     const [vehicles, setVehicles] = useState(['Moto']);
+
+    const { clients, setClients } = useContext(Context)
 
     useEffect(() => {
       getAllStates()
@@ -242,15 +245,62 @@ import getAllStates from '../../helpers/getAllStates';
       }
     }
 
+    const verifyVehicleSelection = (e) => {
+      const allFilled = [
+        typeOfClient,
+        statusOfClient,
+        name,
+        lastName,
+        cpfcnpj,
+        email,
+        phone,
+        cep,
+        street,
+        number,
+        city,
+        state,
+        opening,
+        attendance,
+      ].every(elem => elem !== '')
+
+      if(!allFilled){
+        alert('Se certifique de preencher todos os campos')
+      }
+
+      if (vehicles.length === 0) {
+        alert('É necessário selecionar ao menos um veículo')
+        return null
+      }
+      const client = {
+        typeOfClient,
+        statusOfClient,
+        name,
+        lastName,
+        cpfcnpj,
+        email,
+        phone,
+        cep,
+        street,
+        number,
+        city,
+        state,
+        opening,
+        attendance,
+        vehicles
+      }
+
+      setClients([...clients, client]);
+    }
+
     const clientVehicle = () =>{ 
       const checkbox = (name, defaultChecked = false) => <Checkbox name={name} onChange={handleChangeVehicle} defaultChecked={defaultChecked} />;
 
       return(
       <FormGroup>
         <FormHelperText>Veículos utilizados:</FormHelperText>
-        <FormControlLabel label='Caminhão' control={checkbox('Caminhão')}></FormControlLabel>
-        <FormControlLabel label='Carro' control={checkbox('Carro')}></FormControlLabel>
-        <FormControlLabel label='Moto' control={checkbox('Moto', true)}></FormControlLabel>
+        <FormControlLabel  label='Caminhão' control={checkbox('Caminhão')}></FormControlLabel>
+        <FormControlLabel  label='Carro' control={checkbox('Carro')}></FormControlLabel>
+        <FormControlLabel  label='Moto' control={checkbox('Moto', true)}></FormControlLabel>
       </FormGroup>
       )
     }
@@ -259,6 +309,7 @@ import getAllStates from '../../helpers/getAllStates';
       <Button 
         variant="contained"
         color="primary"
+        onClick={verifyVehicleSelection}
       >CADASTRAR CLIENTE</Button>
     )
 
