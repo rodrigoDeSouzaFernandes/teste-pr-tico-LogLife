@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { TextField, Button, RadioGroup, FormControlLabel } from '@material-ui/core'
+import { TextField, RadioGroup, FormControlLabel } from '@material-ui/core'
 
 export const ClientForm = styled.form`
 display: flex;

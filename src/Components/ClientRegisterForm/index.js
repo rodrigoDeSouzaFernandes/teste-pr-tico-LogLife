@@ -2,7 +2,8 @@
 
   import {ClientForm, ClientTextField, GroupRadio, ControlFormLabel} from './styles';
 
-  import {Select, MenuItem, FormHelperText, Radio
+  import {Select, MenuItem, FormHelperText, Radio, Checkbox, 
+    FormControlLabel, FormGroup, Button,
   } from '@material-ui/core'
 import getAllStates from '../../helpers/getAllStates';
 
@@ -20,6 +21,9 @@ import getAllStates from '../../helpers/getAllStates';
     const [number, setNumber] = useState('');
     const [city, setCity] = useState('');
     const [state, setState] = useState('');
+    const [opening, setOpening] = useState('');
+    const [attendance, setAttendance] = useState('');
+    const [vehicles, setVehicles] = useState(['Moto']);
 
     useEffect(() => {
       getAllStates()
@@ -180,8 +184,8 @@ import getAllStates from '../../helpers/getAllStates';
     const clientState = () => (
       <>
         <Select
-            value={typeOfClient}
-            onChange={({target}) => setTypeOfClient(target.value)}
+            value={state}
+            onChange={({target}) => setState(target.value)}
             displayEmpty
             inputProps={{ 'aria-label': 'Without label' }}
             required
@@ -196,7 +200,67 @@ import getAllStates from '../../helpers/getAllStates';
       </>
     )
 
-    console.log(allStates)
+    const clientTime = () => (
+      <>
+        <FormHelperText>Horário de abertura:</FormHelperText>
+        <ClientTextField
+          id="outlined-basic"
+          variant="outlined"
+          value={opening}
+          onChange={({target}) => setOpening(target.value)}
+          required
+          type='time'
+        />
+      </>
+    )
+
+    const clientDate = () => (
+      <>
+        <FormHelperText>Data do atendimento:</FormHelperText>
+        <ClientTextField
+          id="outlined-basic"
+          variant="outlined"
+          value={attendance}
+          onChange={({target}) => setAttendance(target.value)}
+          required
+          type='date'
+        />
+      </>
+    )
+
+    const handleChangeVehicle = ({target}) => {
+      const { name } = target
+      
+      const isMarked = vehicles.find(elem => elem === name)
+
+      if(isMarked){
+        const removed = vehicles.filter(elem => elem !== name)
+
+        setVehicles(removed)
+      } else {
+        setVehicles([...vehicles, name])
+      }
+    }
+
+    const clientVehicle = () =>{ 
+      const checkbox = (name, defaultChecked = false) => <Checkbox name={name} onChange={handleChangeVehicle} defaultChecked={defaultChecked} />;
+
+      return(
+      <FormGroup>
+        <FormHelperText>Veículos utilizados:</FormHelperText>
+        <FormControlLabel label='Caminhão' control={checkbox('Caminhão')}></FormControlLabel>
+        <FormControlLabel label='Carro' control={checkbox('Carro')}></FormControlLabel>
+        <FormControlLabel label='Moto' control={checkbox('Moto', true)}></FormControlLabel>
+      </FormGroup>
+      )
+    }
+
+    const buttonSubmit = () => (
+      <Button 
+        variant="contained"
+        color="primary"
+      >CADASTRAR CLIENTE</Button>
+    )
 
     return (
       <ClientForm>
@@ -213,6 +277,10 @@ import getAllStates from '../../helpers/getAllStates';
         {clientNumber()}
         {clientCity()}
         {clientState()}
+        {clientTime()}
+        {clientDate()}
+        {clientVehicle()}
+        {buttonSubmit()}
       </ClientForm>
     )
   }
