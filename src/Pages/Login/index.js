@@ -1,10 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom'
 
 import { Container, ButtonAction, ButtonContainer } from './styles';
 
 import { LoginForm, RegisterForm } from '../../Components';
 
 function Login(){
+
+  const history = useHistory();
+
+  useEffect(() => {
+    const token = localStorage.getItem('acessToken')
+    if(token){
+      history.push('/home')
+    }
+  }, [])
 
   const [ action, setAction ] = useState(true)
 

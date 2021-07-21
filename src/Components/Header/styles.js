@@ -10,10 +10,24 @@ export const HeaderContainer = styled.header`
   font-size: 17px;
   height: 50px;
   padding: 0 15px;
+
+  @media screen and (max-width: 700px) {
+    flex-direction: column;
+    height: fit-content;
+    padding: 10px;
+  }
 `;
 
 export const NavBar = styled.nav`
   background:none;
+  
+  @media screen and (max-width: 700px) {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    padding: 10px;
+  }
 `;
 
 export const NavLink = styled(Link)`
@@ -29,4 +43,13 @@ export const NavLink = styled(Link)`
   :hover {
     color: black;
   }
+`;
+
+export const Logo = styled.img`
+  filter: invert(75%);
+  width: 130px;
+
+@media screen and (max-width: 700px) {
+  display: none;
+}
 `;
