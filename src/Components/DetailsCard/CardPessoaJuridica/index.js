@@ -37,7 +37,7 @@ function CardPessoaJuridica({client}) {
       <Data><DetailsKey>Dia de Atendimento:</DetailsKey>{client.name}</Data>
       <Data><DetailsKey>Veículos utilizados:</DetailsKey>{client.name}</Data>
       <BtnContainer>
-        <BtnClient onClick={() => {}}>Editar</BtnClient>
+        <BtnClient onClick={() => history.push(`/edit/${client.id}`)}>Editar</BtnClient>
         <BtnClient onClick={deleteClient}>Deletar</BtnClient>
       </BtnContainer>
     </Card>

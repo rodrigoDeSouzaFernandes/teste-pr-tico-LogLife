@@ -10,6 +10,7 @@ import Home from './Pages/Home';
 import ClientRegister from './Pages/ClientRegister';
 import ClientList from './Pages/ClientList';
 import ClientDetails from './Pages/ClientDetails';
+import EditClient from './Pages/EditClient';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/register' component={ ClientRegister } />
           <Route exact path='/clients-list' component={ ClientList } />
           <Route exact path='/clients-list/:id' component={ ClientDetails } />
+          <Route exact path='/edit/:id' component={ EditClient } />
         </Switch>
       </ThemeProvider>
     </Provider>

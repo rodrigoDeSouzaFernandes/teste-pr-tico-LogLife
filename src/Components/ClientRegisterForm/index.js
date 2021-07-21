@@ -8,7 +8,7 @@
 import getAllStates from '../../helpers/getAllStates';
 import Context from '../../context/Context';
 
-  function ClientRegisterForm() {
+  function ClientRegisterForm({edit, editId}) {
     const [allStates, setAllStates] = useState([])
     const [ typeOfClient, setTypeOfClient ] = useState('');
     const [ statusOfClient, setStatusOfClient ] = useState('Ativo');
@@ -291,7 +291,15 @@ import Context from '../../context/Context';
         vehicles
       }
 
-      setClients([...clients, client]);
+      if(edit){
+        client.id = editId;
+        const removeClient = clients.filter(elem => elem.id !== editId);
+        setClients([...removeClient, client]);
+
+      } else {
+        setClients([...clients, client]);
+      }
+
     }
 
     const clientVehicle = () =>{ 
@@ -317,6 +325,12 @@ import Context from '../../context/Context';
 
     return (
       <ClientForm>
+        {edit && (
+          <div>
+            <h1>Editar Cliente</h1>
+            <h2>ID: {editId}</h2>
+          </div>
+        )}
         {clientType()}
         {clientStatus()}
         {clientName()}
