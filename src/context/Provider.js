@@ -17,8 +17,6 @@ function Provider ({children}) {
       }
   }, [])
 
-  console.log(users)
-
   const context = {
     users,
     setUsers,

@@ -68,9 +68,9 @@ function StickyHeadTable() {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {columns.map((column) => (
+              {columns.map((column, i) => (
                 <TableCell
-                  key={column.id}
+                  key={i}
                   align={column.align}
                   style={{ minWidth: column.minWidth }}
                 >
@@ -80,19 +80,19 @@ function StickyHeadTable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
+            {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, i) => {
               return (
                 <TableRow
                   hover
                   role="checkbox"
                   tabIndex={-1}
-                  key={row.code}
+                  key={i}
                   onClick={() => history.push(`/clients-list/${row.id}`)}
                   >
-                  {columns.map((column) => {
+                  {columns.map((column, i) => {
                     const value = row[column.id];
                     return (
-                      <TableCell key={column.id} align={column.align}>
+                      <TableCell key={i} align={column.align}>
                         {column.format && typeof value === 'number' ? column.format(value) : value}
                       </TableCell>
                     );

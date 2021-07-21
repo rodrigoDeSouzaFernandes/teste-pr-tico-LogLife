@@ -14,7 +14,7 @@ function RegisterForm() {
 
   const emailVeryfy = () => /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i.test(email)
   const passwordVeryfy = () => password.length > 5;
-  const nameVerify = () => name.length > 3
+  const nameVerify = () => name.length >= 3
 
   const registerUser = () => {
     const newUser = {name, email, password};
