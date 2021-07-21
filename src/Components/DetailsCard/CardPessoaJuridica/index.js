@@ -3,9 +3,9 @@ import Context from '../../../context/Context';
 
 import { useHistory } from 'react-router-dom'
 
-import { Data, DetailsKey, Card, Title, BtnClient, BtnContainer } from '../styles'
+import { Data, DetailsKey, Card, Title, BtnContainer, BtnClient } from '../styles'
 
-function CardPessoaFisica({client}) {
+function CardPessoaJuridica({client}) {
 
   const history = useHistory();
 
@@ -23,9 +23,9 @@ function CardPessoaFisica({client}) {
       <Title>Dados do cliente:</Title>
       <Data><DetailsKey>Tipo:</DetailsKey>{client.typeOfClient}</Data>
       <Data><DetailsKey>Situação:</DetailsKey>{client.statusOfClient}</Data>
-      <Data><DetailsKey>Nome:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>Sobrenome:</DetailsKey>{client.lastName}</Data>
-      <Data><DetailsKey>CPF:</DetailsKey>{client.cpfcnpj}</Data>
+      <Data><DetailsKey>Nome Fantasia:</DetailsKey>{client.name}</Data>
+      <Data><DetailsKey>Razão social:</DetailsKey>{client.lastName}</Data>
+      <Data><DetailsKey>CNPJ:</DetailsKey>{client.cpfcnpj}</Data>
       <Data><DetailsKey>E-mail:</DetailsKey>{client.email}</Data>
       <Data><DetailsKey>Telefone:</DetailsKey>{client.name}</Data>
       <Data><DetailsKey>CEP:</DetailsKey>{client.name}</Data>
@@ -44,4 +44,4 @@ function CardPessoaFisica({client}) {
   )
 }
 
-export default CardPessoaFisica;
+export default CardPessoaJuridica;
