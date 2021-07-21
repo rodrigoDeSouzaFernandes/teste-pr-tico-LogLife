@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import Context from '../../context/Context';
 
+import { useHistory } from "react-router-dom";
+
 import { Form, LoginTextField, LoginButton, Message, MessageContainer } from './styles';
 
 function LoginForm() {
@@ -8,7 +10,9 @@ function LoginForm() {
   const [password, setPassword] = useState('');
   const [renderMessage, setRenderMessage] = useState(false)
 
-  const { users, acessToken, setAcessToken } = useContext(Context)
+  const history = useHistory();
+
+  const { users } = useContext(Context)
 
   const emailVeryfy = () => /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+(\.[a-z]+)?$/i.test(email)
   const passwordVeryfy = () => password.length > 5;
@@ -38,8 +42,9 @@ function LoginForm() {
       return null
     }
 
-    setAcessToken(getRandomToken());
-    alert('login efetuado')
+    localStorage.setItem('acessToken', JSON.stringify(getRandomToken()));
+    
+    history.push('/home')
   }
 
   return (
