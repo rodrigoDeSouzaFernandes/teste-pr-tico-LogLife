@@ -9,6 +9,7 @@ import Provider from './context/Provider'
 import Home from './Pages/Home';
 import ClientRegister from './Pages/ClientRegister';
 import ClientList from './Pages/ClientList';
+import ClientDetails from './Pages/ClientDetails';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
           <Route exact path='/home' component={ Home } />
           <Route exact path='/register' component={ ClientRegister } />
           <Route exact path='/clients-list' component={ ClientList } />
+          <Route exact path='/clients-list/:id' component={ ClientDetails } />
         </Switch>
       </ThemeProvider>
     </Provider>

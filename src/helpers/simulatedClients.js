@@ -1,0 +1,40 @@
+const simulatedClients = [
+  {
+      id:0,
+      typeOfClient: 'Pessoa Física',
+      statusOfClient: 'Ativo',
+      name: 'Rodrigo',
+      lastName:'de Souza Fernandes',
+      cpfcnpj: '1111111111111',
+      email:'rdesouza2008@gmail.com',
+      phone:'31987696267',
+      cep:'22222222',
+      street:'blumenau',
+      number:'1',
+      city:'betim',
+      state:'Minas Gerais',
+      opening:'07:00',
+      attendance:'12-09-2020',
+      vehicles: ['Carro'],
+  },
+  {
+    id:1,
+    typeOfClient: 'Pessoa Jurídica',
+    statusOfClient: 'Inativo',
+    name: 'Jéssica',
+    lastName:'Santos',
+    cpfcnpj: '1111111111111',
+    email:'jessica@outlook.com',
+    phone:'234567891',
+    cep:'222222121',
+    street:'blumenau',
+    number:'31',
+    city:'contagem',
+    state:'Minas Gerais',
+    opening:'07:00',
+    attendance:'12-09-2020',
+    vehicles: ['Moto', 'Camihão'],
+  }
+];
+
+export default simulatedClients;

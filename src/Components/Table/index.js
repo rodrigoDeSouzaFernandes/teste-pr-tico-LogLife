@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { useHistory } from "react-router-dom";
+
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
@@ -43,9 +45,13 @@ function StickyHeadTable() {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+  const history = useHistory();
+
   const { clients } = useContext(Context);
 
-  const rows = clients.map(({id, name, lastName, typeOfClient}) => createData(id, name, lastName, typeOfClient))
+  const rows = clients.map(
+    ({id, name, lastName, typeOfClient}) => createData(id, name, lastName, typeOfClient))
+
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -76,7 +82,13 @@ function StickyHeadTable() {
           <TableBody>
             {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => {
               return (
-                <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
+                <TableRow
+                  hover
+                  role="checkbox"
+                  tabIndex={-1}
+                  key={row.code}
+                  onClick={() => history.push(`/clients-list/${row.id}`)}
+                  >
                   {columns.map((column) => {
                     const value = row[column.id];
                     return (
