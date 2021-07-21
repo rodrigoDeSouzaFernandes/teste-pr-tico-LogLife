@@ -1,6 +1,7 @@
   import React, {useState, useEffect, useContext} from 'react';
 
-  import {ClientForm, ClientTextField, GroupRadio, ControlFormLabel} from './styles';
+  import {ClientForm, ClientTextField, GroupRadio,
+    ControlFormLabel, EditTitle, EditSubTitle} from './styles';
 
   import {Select, MenuItem, FormHelperText, Radio, Checkbox, 
     FormControlLabel, FormGroup, Button,
@@ -320,15 +321,17 @@ import Context from '../../context/Context';
         variant="contained"
         color="primary"
         onClick={verifyVehicleSelection}
-      >CADASTRAR CLIENTE</Button>
+      >
+        {edit ? 'EDITAR CLIENTE' : 'CADASTRAR CLIENTE'}
+      </Button>
     )
 
     return (
       <ClientForm>
         {edit && (
           <div>
-            <h1>Editar Cliente</h1>
-            <h2>ID: {editId}</h2>
+            <EditTitle>Editar Cliente</EditTitle>
+            <EditSubTitle>ID: {editId}</EditSubTitle>
           </div>
         )}
         {clientType()}

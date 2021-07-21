@@ -27,3 +27,15 @@ export const GroupRadio = styled(RadioGroup)`
 `;
 
 export const ControlFormLabel = styled(FormControlLabel)``;
+
+export const EditTitle = styled.h1`
+  font-size: 25px;
+  font-weight: 530;
+  padding: 10px 0;
+  color: rgb(40,40,40)
+`;
+
+export const EditSubTitle = styled.h1`
+  margin-bottom: 10px;
+  color: rgb(40,40,40)
+`;

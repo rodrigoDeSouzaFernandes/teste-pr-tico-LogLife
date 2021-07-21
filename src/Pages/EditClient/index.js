@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { ClientRegisterForm, Header } from '../../Components';
+import { RegisterContainer } from '../ClientRegister/styles';
 
 
 function EditClient(props) {
@@ -8,10 +9,12 @@ function EditClient(props) {
 const {id} = props.match.params
 
   return (
-    <div>
-      <Header />
+    <>
+    <Header />
+    <RegisterContainer>
       <ClientRegisterForm edit={true} editId={Number(id)}/>
-    </div>
+    </RegisterContainer>
+    </>
   )
 }
 
