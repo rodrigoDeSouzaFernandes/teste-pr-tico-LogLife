@@ -27,15 +27,15 @@ function CardPessoaFisica({client}) {
       <Data><DetailsKey>Sobrenome:</DetailsKey>{client.lastName}</Data>
       <Data><DetailsKey>CPF:</DetailsKey>{client.cpfcnpj}</Data>
       <Data><DetailsKey>E-mail:</DetailsKey>{client.email}</Data>
-      <Data><DetailsKey>Telefone:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>CEP:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>Rua:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>Numero:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>Cidade:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>Estado:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>Horário de Abertura:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>Dia de Atendimento:</DetailsKey>{client.name}</Data>
-      <Data><DetailsKey>Veículos utilizados:</DetailsKey>{client.name}</Data>
+      <Data><DetailsKey>Telefone:</DetailsKey>{client.phone}</Data>
+      <Data><DetailsKey>CEP:</DetailsKey>{client.cep}</Data>
+      <Data><DetailsKey>Rua:</DetailsKey>{client.street}</Data>
+      <Data><DetailsKey>Numero:</DetailsKey>{client.number}</Data>
+      <Data><DetailsKey>Cidade:</DetailsKey>{client.city}</Data>
+      <Data><DetailsKey>Estado:</DetailsKey>{client.state}</Data>
+      <Data><DetailsKey>Horário de Abertura:</DetailsKey>{client.opening}</Data>
+      <Data><DetailsKey>Dia de Atendimento:</DetailsKey>{client.attendance}</Data>
+      <Data><DetailsKey>Veículos utilizados:</DetailsKey>{client.vehicles.join(', ')}</Data>
       <BtnContainer>
         <BtnClient onClick={() => history.push(`/edit/${client.id}`)}>Editar</BtnClient>
         <BtnClient onClick={deleteClient}>Deletar</BtnClient>
