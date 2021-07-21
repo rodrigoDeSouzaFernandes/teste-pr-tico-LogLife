@@ -246,9 +246,8 @@ import Context from '../../context/Context';
     }
 
     const verifyVehicleSelection = (e) => {
-      const allFilled = [
+      const atributes = [
         typeOfClient,
-        statusOfClient,
         name,
         lastName,
         cpfcnpj,
@@ -261,7 +260,9 @@ import Context from '../../context/Context';
         state,
         opening,
         attendance,
-      ].every(elem => elem !== '')
+      ]
+      
+      const allFilled = atributes.every(elem => elem !== '')
 
       if(!allFilled){
         alert('Se certifique de preencher todos os campos')
@@ -272,6 +273,7 @@ import Context from '../../context/Context';
         return null
       }
       const client = {
+        id: clients.length === 0 ? clients.length : clients[clients.length - 1].id + 1,
         typeOfClient,
         statusOfClient,
         name,
